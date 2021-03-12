@@ -40,11 +40,11 @@
 
     /**
      *  Options view
-     *  
+     *
      *  route: '/settings'
-     *  
+     *
      *  Allow user to edit any option.
-     *  
+     *
      *  This is the content of the Options tab set in views/settings/index.vue
      *  The view is a form that automatically post to backend every time a field is changed.
      *
@@ -90,7 +90,8 @@
                     { text: this.$t('settings.forms.15_minutes'), value: '15' },
                     { text: this.$t('settings.forms.30_minutes'), value: '30' },
                     { text: this.$t('settings.forms.1_hour'), value: '60' },
-                    { text: this.$t('settings.forms.1_day'), value: '1440' }, 
+                    { text: this.$t('settings.forms.1_day'), value: '1440' },
+                    { text: 'After 7 days', value: '10080' },
                 ],
                 groups: [
                     { text: this.$t('groups.no_group'), value: 0 },
