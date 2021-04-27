@@ -25,11 +25,11 @@ class LogoutInactiveUser
         if (!Auth::guard('api')->check()) {
             return $next($request);
         }
-     
+
         $user = Auth::guard('api')->user();
 
         $now = Carbon::now();
-        $inactiveFor = $now->diffInSeconds(Carbon::parse($user->last_seen_at));
+        $inactiveFor = $now->diffInSeconds(Carbon::parse($user->last_seen_at)); // ADAM: last_seen_at is now time since last login
 
         // Fetch all setting values
         $settings = Options::get();
@@ -38,7 +38,7 @@ class LogoutInactiveUser
 
         // If user has been inactive longer than the allowed inactivity period
         if ($kickUserAfterXSecond > 0 && $inactiveFor > $kickUserAfterXSecond) {
-     
+
             $user->last_seen_at = $now->format('Y-m-d H:i:s');
             $user->save();
 
@@ -50,7 +50,7 @@ class LogoutInactiveUser
                 $accessToken->revoke();
             }
             // @codeCoverageIgnoreEnd
-     
+
             return response()->json(['message' => 'unauthorised'], Response::HTTP_UNAUTHORIZED);
         }
 

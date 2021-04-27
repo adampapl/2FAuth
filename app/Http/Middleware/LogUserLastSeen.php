@@ -17,11 +17,11 @@ class LogUserLastSeen
      */
     public function handle($request, Closure $next)
     {
-
-        if( Auth::guard('api')->check() ) {
-            Auth::guard('api')->user()->last_seen_at = Carbon::now()->format('Y-m-d H:i:s');
-            Auth::guard('api')->user()->save();
-        }
+// ADAM: last_seen_at is now used to determine last time user did login
+//        if( Auth::guard('api')->check() ) {
+//            Auth::guard('api')->user()->last_seen_at = Carbon::now()->format('Y-m-d H:i:s');
+//            Auth::guard('api')->user()->save();
+//        }
 
         return $next($request);
     }
