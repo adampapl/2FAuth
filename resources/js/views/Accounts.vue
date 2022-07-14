@@ -154,7 +154,7 @@
                     <!-- search -->
                     <div class="field" v-else>
                         <div class="control has-icons-right">
-                            <input type="text" class="input is-rounded is-search" v-model="search">
+                            <input type="text" class="input is-rounded is-search" v-model="search" ref="search">
                             <span class="icon is-small is-right">
                                 <font-awesome-icon :icon="['fas', 'search']"  v-if="!search" />
                                 <a class="delete" v-if="search" @click="search = '' "></a>
@@ -284,7 +284,13 @@
         },
 
         props: ['initialEditMode', 'toRefresh'],
-
+        created() {
+            window.addEventListener("keydown", this.hotFindListener);
+        },
+        // make sure you remove the listener when the component is no longer visible
+        destroyed() {
+            window.removeEventListener("keydown", this.hotFindListener);
+        },
         mounted() {
 
             // we don't have to fetch fresh data so we try to load them from localstorage to avoid display latency
@@ -315,6 +321,12 @@
         },
 
         methods: {
+            hotFindListener(e){ // Handle CMD+F or CTRL+F
+                if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70) || (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70) || (e.metaKey && e.keyCode === 70))) {
+                    e.preventDefault();
+                    this.$refs.search.focus()
+                }
+            },
             clearSearch(){
                 this.search = '';
             },
