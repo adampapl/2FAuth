@@ -178,7 +178,7 @@
         </div>
         <!-- modal -->
         <modal v-model="showTwofaccountInModal">
-            <token-displayer ref="TokenDisplayer" ></token-displayer>
+            <token-displayer ref="TokenDisplayer" :clearSearch="clearSearch"></token-displayer>
         </modal>
     </div>
 </template>
@@ -315,7 +315,9 @@
         },
 
         methods: {
-
+            clearSearch(){
+                this.search = '';
+            },
             /**
              * Route user to the appropriate submitting view
              */

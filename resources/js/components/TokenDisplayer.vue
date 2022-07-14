@@ -39,6 +39,7 @@
         },
 
         props: {
+            clearSearch: Function,
             account : String,
             algorithm : String,
             digits : Number,
@@ -245,6 +246,7 @@
                 }
                 else if(this.$root.appSettings.closeTokenOnCopy) {
                     this.$parent.isActive = false
+                    this.clearSearch()
                     this.clearOTP()
                 }
 
