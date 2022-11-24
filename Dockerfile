@@ -46,10 +46,10 @@ USER root
 RUN apk update && \
     apk add \
         git \ 
-        php73-gd \ 
-        php73-pecl-imagick \ 
-        php73-pdo_mysql \ 
-        php73-pdo &&\ 
+        php7-gd \ 
+        php7-pecl-imagick \ 
+        php7-pdo_mysql \ 
+        php7-pdo &&\ 
     rm -rf /var/cache/apk/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Copy all files with compiled frontend to current stage
