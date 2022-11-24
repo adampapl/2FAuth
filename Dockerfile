@@ -46,18 +46,10 @@ USER root
 RUN apk update && \
     apk add \
         git \ 
-        php73-bz2 \ 
         php73-gd \ 
         php73-pecl-imagick \ 
-        php73-fileinfo \ 
-        php73-simplexml \ 
-        php73-xmlwriter \ 
-        php73-tokenizer \ 
         php73-pdo_mysql \ 
-        php73-pdo \ 
-        libsodium-dev \ 
-        php73-sodium \
-        php73-zip && \ 
+        php73-pdo &&\ 
     rm -rf /var/cache/apk/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Copy all files with compiled frontend to current stage
