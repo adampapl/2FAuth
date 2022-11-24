@@ -34,7 +34,7 @@ RUN cat .env
 ##########################################
 # https://hub.docker.com/r/trafex/php-nginx/tags
 # last one that supports php7.3
-FROM trafex/php-nginx:1.9.0
+FROM trafex/alpine-nginx-php7:1.9.0
 
 USER root
 
