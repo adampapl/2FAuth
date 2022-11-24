@@ -28,6 +28,8 @@ ENV MAILGUN_SECRET '$MAILGUN_SECRET'
 RUN envsubst < .env.docker-production > .env
 RUN cat .env
 
+RUN echo $OAUTH_PRIVATE | base64 -D > /var/www/html/storage/oauth-private.key
+RUN echo $OAUTH_PUBLIC | base64 -D > /var/www/html/storage/oauth-public.key
 
 ##########################################
 ######## BACKEND & FINAL STAGE ###########
