@@ -49,6 +49,10 @@ RUN apk update && \
         php7-gd \ 
         php7-pecl-imagick \ 
         php7-pdo_mysql \ 
+        php7-fileinfo \ 
+        php7-simplexml \ 
+        php7-xmlwriter \ 
+        php7-tokenizer \ 
         php7-pdo &&\ 
     rm -rf /var/cache/apk/* /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
